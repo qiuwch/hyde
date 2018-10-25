@@ -1,6 +1,6 @@
 {{ define "main" -}}
 <div class="posts">
-{{ range .Data.Pages.ByLastmod.Reverse -}}
+{{ range where .Data.Pages.ByLastmod.Reverse "Date" "ge" (now.AddDate -2 0 0) -}}
 <article class="post">
   {{ $alternate_title := replaceRE "[0-9]{4}-[0-9]{2}-[0-9]{2}" "" .File.BaseFileName }}
   {{ $alternate_title := replace $alternate_title "-" " " | title }}
