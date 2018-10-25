@@ -1,6 +1,9 @@
 {{ define "main" -}}
 <div class="post">
-  <h1>{{ .Title }}</h1>
+  <!-- {{ $alternate_title := replace .File.BaseFileName "-" " " | title }} -->
+  {{ $alternate_title := replaceRE "[0-9]{4}-[0-9]{2}-[0-9]{2}" "" .File.BaseFileName }}
+  {{ $alternate_title := replace $alternate_title "-" " " | title }}
+  <h1>{{ .Title | default $alternate_title }}</h1>
   <time datetime={{ .Date.Format "2006-01-02T15:04:05Z0700" }} class="post-date">{{ .Date.Format "Mon, Jan 2, 2006" }}</time>
   {{ .Content }}
 </div>

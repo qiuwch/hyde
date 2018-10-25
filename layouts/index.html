@@ -2,7 +2,9 @@
 <div class="posts">
 {{ range .Data.Pages -}}
 <article class="post">
-  {{ $alternate_title := replace .File.BaseFileName "-" " " | title }}
+  {{ $alternate_title := replaceRE "[0-9]{4}-[0-9]{2}-[0-9]{2}" "" .File.BaseFileName }}
+  {{ $alternate_title := replace $alternate_title "-" " " | title }}
+
   <h1 class="post-title">
     <a href="{{ .Permalink }}">{{ .Title | default $alternate_title }}</a>
   </h1>

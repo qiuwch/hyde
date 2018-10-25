@@ -2,7 +2,9 @@
 <ul class="posts">
 {{ range .Data.Pages -}}
   <li>
-    <span><a href="{{ .Permalink }}">{{ .Title }}</a> <time class="pull-right post-list" datetime="{{ .Date.Format "2006-01-02T15:04:05Z0700" }}">{{ .Date.Format "Mon, Jan 2, 2006" }}</time></span>
+    {{ $alternate_title := replaceRE "[0-9]{4}-[0-9]{2}-[0-9]{2}" "" .File.BaseFileName }}
+    {{ $alternate_title := replace $alternate_title "-" " " | title }}
+    <span><a href="{{ .Permalink }}">{{ .Title | default $alternate_title }}</a> <time class="pull-right post-list" datetime="{{ .Date.Format "2006-01-02T15:04:05Z0700" }}">{{ .Date.Format "Mon, Jan 2, 2006" }}</time></span>
   </li>
 {{- end }}
 </ul>
