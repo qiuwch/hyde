@@ -10,7 +10,8 @@
 <style>
 /* small screens */
 /* Default value is 768px, iphone X is 1125px, so I need to tune it up */
-@media (max-width: 1200px) {
+/* It seems to use logical pixel, not exact pixel, I finally set it to 800px, so I can see the diff in debug mode */
+@media (max-width: 800px) {
   /* override stickyness so that the navigation does not follow scrolling */
   nav[data-toggle='toc'] {
     margin-bottom: 42px;
@@ -19,7 +20,7 @@
 
   /* PICK ONE */
   /* don't expand nested items, which pushes down the rest of the page when navigating */
-  nav[data-toggle='toc'] .nav .active .nav {
+  nav[data-toggle='toc'] .nav .nav.navbar-nav {
     display: none;
   }
   /* alternatively, if you *do* want the second-level navigation to be shown (as seen on this page on mobile), use this */
