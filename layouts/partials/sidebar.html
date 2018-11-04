@@ -7,6 +7,33 @@
 <!-- add after bootstrap.min.js -->
 <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.0/dist/bootstrap-toc.min.js"></script>
 
+<style>
+/* small screens */
+@media (max-width: 768px) {
+  /* override stickyness so that the navigation does not follow scrolling */
+  nav[data-toggle='toc'] {
+    margin-bottom: 42px;
+    position: static;
+  }
+
+  /* PICK ONE */
+  /* don't expand nested items, which pushes down the rest of the page when navigating */
+  nav[data-toggle='toc'] .nav .active .nav {
+    display: none;
+  }
+  /* alternatively, if you *do* want the second-level navigation to be shown (as seen on this page on mobile), use this */
+  /*
+  nav[data-toggle='toc'] .nav .nav {
+    display: block;
+  }
+  */
+}
+nav[data-toggle=toc] .nav>li>a {
+  /* color: rgba(255,255,255,.5) */
+  color: whitesmoke;
+}
+</style>
+
 
 <aside class="sidebar">
   <div class="container sidebar-sticky">
@@ -24,12 +51,6 @@
       });
     });
     </script>
-  <style>
-      nav[data-toggle=toc] .nav>li>a {
-        /* color: rgba(255,255,255,.5) */
-        color: whitesmoke;
-      }
-  </style>
 
     <div class="sidebar-about">
       <a href="{{ .Site.BaseURL }}"><h1>{{ .Site.Title }}</h1></a>
