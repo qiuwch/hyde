@@ -66,6 +66,12 @@ nav[data-toggle=toc] .nav-link.active, nav[data-toggle=toc] .nav-link.active:foc
       </p>
     </div>
 
+    <div class="my-auto" >
+      <form action="{{ "search" | absURL }}">
+        <input id="search-query" name="s"/>
+      </form>
+    </div>
+
     <nav>
       <ul class="sidebar-nav">
         <li><a href="{{ .Site.BaseURL }}">Home</a> </li>
