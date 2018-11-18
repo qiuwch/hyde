@@ -1,5 +1,8 @@
 {{ define "main" -}}
+
 <div class="post">
+  {{ partial "breadcrumb.html" . }}
+
   <!-- {{ $alternate_title := replace .File.BaseFileName "-" " " | title }} -->
   {{ $alternate_title := replaceRE "[0-9]{4}-[0-9]{2}-[0-9]{2}" "" .File.BaseFileName }}
   {{ $alternate_title := replace $alternate_title "-" " " | title }}
