@@ -11,6 +11,8 @@
 {{- end }}
 </ul>
 
+<hr>
+
 <div class="posts">
 {{ range where .Data.Pages.ByLastmod.Reverse "Date" "ge" (now.AddDate -2 0 0) -}}
 <article class="post">
