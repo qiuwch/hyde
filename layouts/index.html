@@ -1,4 +1,16 @@
 {{ define "main" -}}
+
+<!-- {{ partial "breadcrumb.html" . }} -->
+
+<ul class="sections">
+{{ range .Sections -}}
+  <li>
+    <span><a href="{{ .Permalink }}">{{ .Title }}</a> <time class="pull-right post-list" datetime="{{ .Date.Format "2006-01-02T15:04:05Z0700" }}">{{ .Date.Format "Mon, Jan 2, 2006" }}</time></span>
+    <br><span>{{ .Path }}</span>
+  </li>
+{{- end }}
+</ul>
+
 <div class="posts">
 {{ range where .Data.Pages.ByLastmod.Reverse "Date" "ge" (now.AddDate -2 0 0) -}}
 <article class="post">
